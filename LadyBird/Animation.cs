@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using LadyBird.Sprites;
 using Microsoft.Xna.Framework;
 
@@ -18,6 +15,7 @@ namespace LadyBird
 
         public Animation(AnimatedSprite sprite, int delay)
         {
+            Frames = new List<Rectangle>();
             _sprite = sprite;
             Delay = delay;
         }

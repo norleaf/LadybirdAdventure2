@@ -1,13 +1,15 @@
 ﻿#region Using Statements
-using System;
+
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 using LadyBird.Sprites;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Storage;
-using Microsoft.Xna.Framework.GamerServices;
+using ButtonState = Microsoft.Xna.Framework.Input.ButtonState;
+using Keys = Microsoft.Xna.Framework.Input.Keys;
+
 #endregion
 
 namespace LadyBird
@@ -18,13 +20,25 @@ namespace LadyBird
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
+        private Screen screen = Screen.AllScreens.First(e => e.Primary);
+        private static Game1 _instance;
         SpriteBatch spriteBatch;
-        public List<Sprite> Sprites { get; set; }
+        public List<Sprite> SolidSprites { get; set; }
         public List<Sprite> BackgroundSprites { get; set; }
- 
 
+        public static Game1 Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Game1();
+                }
+                return _instance;
+            }
+        }
 
-        public Game1()
+        private Game1()
             : base()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -40,7 +54,11 @@ namespace LadyBird
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            Window.IsBorderless = true;
+            Window.Position = new Point(screen.Bounds.X,screen.Bounds.Y);
+            graphics.PreferredBackBufferWidth = screen.Bounds.Width;
+            graphics.PreferredBackBufferHeight = screen.Bounds.Height;
+            graphics.ApplyChanges();
             base.Initialize();
         }
 
@@ -54,6 +72,19 @@ namespace LadyBird
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            SolidSprites = new List<Sprite>();
+            Texture2D lb = Content.Load<Texture2D>("lb");
+            Texture2D lb_all = Content.Load<Texture2D>("lb_all");
+            Texture2D dummyground = Content.Load<Texture2D>("dummy_ground");
+
+            Player player = new Player(lb_all, new Vector2(200,200));
+            
+            SolidSprite dummy = new SolidSprite(dummyground,new Vector2(0,700));
+
+            //CollisionHandler collisionHandler = CollisionHandler.Instance;
+            //collisionHandler.SolidsList.Add(dummy);
+            SolidSprites.Add(player);
+            SolidSprites.Add(dummy);
         }
 
         /// <summary>
@@ -76,6 +107,10 @@ namespace LadyBird
                 Exit();
 
             // TODO: Add your update logic here
+            foreach (Sprite sprite in SolidSprites)
+            {
+                sprite.Update(gameTime);
+            }
 
             base.Update(gameTime);
         }
@@ -90,7 +125,10 @@ namespace LadyBird
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-
+            foreach (Sprite sprite in SolidSprites)
+            {
+                sprite.Draw(spriteBatch);
+            }
             spriteBatch.End();
             base.Draw(gameTime);
         }

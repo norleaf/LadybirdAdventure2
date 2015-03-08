@@ -23,3 +23,9 @@ C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\
 C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\obj\x86\Debug\LadyBird.csprojResolveAssemblyReference.cache
 C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\obj\x86\Debug\LadyBird.exe
 C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\obj\x86\Debug\LadyBird.pdb
+C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\bin\Windows\Debug\Content\bg.png
+C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\bin\Windows\Debug\Content\lb.png
+C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\bin\Windows\Debug\Content\lb_ani.png
+C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\bin\Windows\Debug\Content\lb_eat.png
+C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\bin\Windows\Debug\Content\lb_all.png
+C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\bin\Windows\Debug\Content\dummy_ground.png
