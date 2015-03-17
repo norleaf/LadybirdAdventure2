@@ -29,3 +29,7 @@ C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\
 C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\bin\Windows\Debug\Content\lb_eat.png
 C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\bin\Windows\Debug\Content\lb_all.png
 C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\bin\Windows\Debug\Content\dummy_ground.png
+C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\bin\Windows\Debug\LadyBird.exe.manifest
+C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\bin\Windows\Debug\LadyBird.application
+C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\obj\x86\Debug\LadyBird.exe.manifest
+C:\Users\Hans\Documents\Visual Studio 2013\Projects\LadyBird\LadybirdAdventure2\LadyBird\obj\x86\Debug\LadyBird.application

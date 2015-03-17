@@ -29,6 +29,11 @@ namespace LadyBird
             }
         }
 
+        public void Restart()
+        {
+            _currentFrame = 0;
+        }
+
         private Rectangle NextFrame()
         {
             if (_currentFrame == Frames.Count - 1 && Loop) _currentFrame = 0;

@@ -1,5 +1,6 @@
 ﻿#region Using Statements
 
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,6 +11,7 @@ namespace LadyBird.Sprites
     
     public class Sprite
     {
+        public String Name { get; set; }
         public Texture2D SpriteTexture { get; set; }
         public Vector2 Position { get; set; }
 
@@ -24,6 +26,11 @@ namespace LadyBird.Sprites
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(SpriteTexture, Position, Color.White);
+        }
+
+        public virtual Sprite CloneSprite(int x, int y)
+        {
+            return new Sprite(SpriteTexture,new Vector2(x,y));
         }
     }
 }

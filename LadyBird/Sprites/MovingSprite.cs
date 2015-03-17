@@ -17,6 +17,7 @@ namespace LadyBird.Sprites
 
         public MovingSprite(Texture2D spriteTexture, Vector2 position) : base(spriteTexture, position)
         {
+            SourceRectangle = new Rectangle(0,0, SpriteTexture.Width, SpriteTexture.Height);
             game = Game1.Instance;
         }
 
@@ -49,7 +50,7 @@ namespace LadyBird.Sprites
         {
             bool result = false;
             Rectangle nextBoundingBox = new Rectangle((int)Position.X + distance, (int)Position.Y, SourceRectangle.Width, SourceRectangle.Height-1);
-            foreach (SolidSprite otherSprite in game.SolidSprites)
+            foreach (SolidSprite otherSprite in game.Level.LevelSprites)
             {
                 if (otherSprite != this)
                 {
@@ -68,7 +69,7 @@ namespace LadyBird.Sprites
                 bool result = false;
 
                 Rectangle nextBoundingBox = new Rectangle((int)Position.X, (int)Position.Y + distance, SourceRectangle.Width, SourceRectangle.Height);
-                foreach (SolidSprite otherSprite in game.SolidSprites)
+                foreach (SolidSprite otherSprite in game.Level.LevelSprites)
                 {
                     if (otherSprite!=this)
                     {
@@ -95,7 +96,7 @@ namespace LadyBird.Sprites
             spriteBatch.Draw(SpriteTexture, Position, SourceRectangle, Color.White, Rotation, new Vector2(0,0), 1, effect, 0 );
         }
 
-        public void CollideWith(SolidSprite other)
+        public virtual void CollideWith(SolidSprite other)
         {
             //throw new NotImplementedException();
         }

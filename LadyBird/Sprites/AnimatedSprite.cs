@@ -14,7 +14,8 @@ namespace LadyBird.Sprites
             Waiting,
             Walking,
             Jumping,
-            Fighting
+            Fighting,
+            Eating
         }
         
         public AnimatedSprite(Texture2D spriteTexture, Vector2 position) : base(spriteTexture, position)

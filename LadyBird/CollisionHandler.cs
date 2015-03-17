@@ -7,38 +7,30 @@ namespace LadyBird
 {
     public class CollisionHandler : IUpdateable
     {
-        public List<SolidSprite> SolidsList { get; set; }
+        public List<ICollidable> ListenerList { get; set; }
         public List<MovingSprite> MovingList { get; set; } 
-        private static CollisionHandler _instance;
 
-        public static CollisionHandler Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new CollisionHandler();
-                }
-                return _instance;
-            }
-        }
+        
 
-        private CollisionHandler()
+        public CollisionHandler()
         {
-            SolidsList = new List<SolidSprite>();
+            ListenerList = new List<ICollidable>();
             MovingList = new List<MovingSprite>();
         }
 
 
         public void Update(GameTime gameTime)
         {
-            foreach (var movingSprite in MovingList)
+            foreach (var listener in ListenerList)
             {
-                foreach (var solid in SolidsList)
+                Console.WriteLine("player?: "+listener.BoundingBox);
+                foreach (var monster in MovingList)
                 {
-                    if (solid.BoundingBox.Intersects(movingSprite.BoundingBox))
+                 //   Console.WriteLine("aphis?: "+monster.BoundingBox);
+                    if (monster.BoundingBox.Intersects(listener.BoundingBox))
                     {
-                        //solid.BoundingBox.Contains()
+                        Console.WriteLine("collide!!!");
+                        listener.CollideWith(monster);
                     }
                 }
             }

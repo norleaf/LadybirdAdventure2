@@ -23,8 +23,12 @@ namespace LadyBird
         private Screen screen = Screen.AllScreens.First(e => e.Primary);
         private static Game1 _instance;
         SpriteBatch spriteBatch;
-        public List<Sprite> SolidSprites { get; set; }
-        public List<Sprite> BackgroundSprites { get; set; }
+        //public List<Sprite> SolidSprites { get; set; }
+        //public List<Sprite> BackgroundSprites { get; set; }
+        public Player Player { get; set; }
+        public Level Level { get; set; }
+        public LevelBuilder LevelBuilder { get; set; }
+        public CollisionHandler CollisionHandler { get; set; }
 
         public static Game1 Instance
         {
@@ -70,21 +74,23 @@ namespace LadyBird
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            CollisionHandler = new CollisionHandler();
             // TODO: use this.Content to load your game content here
-            SolidSprites = new List<Sprite>();
             Texture2D lb = Content.Load<Texture2D>("lb");
             Texture2D lb_all = Content.Load<Texture2D>("lb_all");
             Texture2D dummyground = Content.Load<Texture2D>("dummy_ground");
+            Texture2D aphis = Content.Load<Texture2D>("foodbug");
 
-            Player player = new Player(lb_all, new Vector2(200,200));
+            Player = new Player(lb_all, new Vector2(200,200));
+            LevelBuilder = new LevelBuilder();
+            LevelBuilder.Dummy = new SolidSprite(dummyground, new Vector2(-700, 700));
+            LevelBuilder.Aphis = new Aphis(aphis, new Vector2(-700, 700));
+            Level = LevelBuilder.LoadLevel1();
+
             
-            SolidSprite dummy = new SolidSprite(dummyground,new Vector2(0,700));
+            CollisionHandler.ListenerList.Add(Player);
 
-            //CollisionHandler collisionHandler = CollisionHandler.Instance;
-            //collisionHandler.SolidsList.Add(dummy);
-            SolidSprites.Add(player);
-            SolidSprites.Add(dummy);
+
         }
 
         /// <summary>
@@ -107,10 +113,9 @@ namespace LadyBird
                 Exit();
 
             // TODO: Add your update logic here
-            foreach (Sprite sprite in SolidSprites)
-            {
-                sprite.Update(gameTime);
-            }
+            Player.Update(gameTime);
+            CollisionHandler.Update(gameTime);
+            Level.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -125,10 +130,8 @@ namespace LadyBird
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            foreach (Sprite sprite in SolidSprites)
-            {
-                sprite.Draw(spriteBatch);
-            }
+            Level.Draw(spriteBatch);
+            Player.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
